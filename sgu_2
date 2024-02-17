@@ -1,0 +1,23 @@
+import PySimpleGUI as sg
+
+sg.theme("BrightColors")
+
+gorunum=[
+    [sg.T("Ad"),sg.I(key="name")],
+    [sg.T("Soyad"),sg.I(key="lastname")],
+    [sg.T("Year"),sg.I(key="year")],
+    [sg.B("make")],
+    [sg.T(key="-posta-")]
+]
+
+pen=sg.Window("first class",layout=gorunum,size=(300,300))
+
+while True:
+    event,data=pen.read()
+    if event == "make":
+        posta=data["name"]+data["lastname"]+data["year"]+"@company.com"
+        posta=posta.replace("ü","u").replace("ö","o").replace("ç","c")
+        pen["-posta-"].update(posta) #pencere -posta- keyi ile tarif edilen alana posta değişken değeri yazdı
+        #sg.popup(posta)
+    elif event == sg.WIN_CLOSED:
+        break

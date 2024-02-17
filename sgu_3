@@ -1,0 +1,31 @@
+import json,requests
+import PySimpleGUI as sg
+
+def sayi(meslek,yil,cinsiyet):
+    id="https://raw.githubusercontent.com/vega/vega/main/docs/data/jobs.json"
+    veri=requests.get(id).text
+    data=json.loads(veri)
+    for grup in data:
+        if grup["job"]==meslek and grup["year"]==yil and grup["sex"]==cinsiyet:
+            return grup["count"]
+
+#print(sayi("Actor",1860,"men"))
+
+gorunum=[
+    [sg.T("Meslek"),sg.I(key="-m-")],
+    [sg.T("Yil"),sg.I(key="-y-")],
+    [sg.T("Cinsiyet"),sg.I(key="-c-")],
+    [sg.B("SHOW")]
+]
+pen=sg.Window("Meslekler",layout=gorunum)
+
+while True:
+    event,data=pen.read()
+    if event=="SHOW":
+        gelen=sayi(data["-m-"],int(data["-y-"]),data["-c-"])
+        sg.popup(gelen)
+    if event==sg.WIN_CLOSED:
+        break
+
+
+

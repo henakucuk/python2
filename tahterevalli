@@ -1,0 +1,39 @@
+import random
+import tkinter as tk
+
+pen = tk.Tk()
+pen.geometry("600x300")
+
+def leftright(sayi):
+    lblleft["bg"]="white"
+    lblright["bg"]="white"
+    uzunluk = len(sayi)
+    yarisi = uzunluk//2
+    left = sayi[0:yarisi]
+    right = sayi[-1*yarisi:]
+    lblleft["text"]=left
+    lblright["text"]=right
+    if int(left)>int(right):
+        lblleft["bg"]="green"
+    else:
+        lblright["bg"]="green"
+
+def rastgele():
+    sayi = random.randint(10,100000)
+    lbl["text"]=sayi
+    leftright(str(sayi))
+
+
+btn= tk.Button(text = "seasaw",command=rastgele)
+btn.grid(row=0,column=0,columnspan=2)
+
+lbl=tk.Label()
+lbl.grid(row=1,column=0,columnspan=2)
+
+lblleft=tk.Label()
+lblleft.grid(row=2,column=0)
+
+lblright=tk.Label()
+lblright.grid(row=2,column=1)
+
+pen.mainloop()

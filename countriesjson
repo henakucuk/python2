@@ -1,0 +1,12 @@
+import requests,json
+
+id='https://raw.githubusercontent.com/vega/vega/main/docs/data/countries.json'
+
+veri=requests.get(id).text
+data=json.loads(veri)
+
+istenen1="Turkey"
+
+for i in data:
+    if i['country'] == istenen1:
+        print(i['year'], i['fertility'])

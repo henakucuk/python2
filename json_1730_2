@@ -1,0 +1,9 @@
+import requests,json
+
+adres="https://raw.githubusercontent.com/vega/vega/main/docs/data/weather.json"
+
+veri=requests.get(adres).text
+data=json.loads(veri)
+
+for gun in data:
+    print(f"""day id: {gun["id"]} , max temputure : {gun["record"]["high"]}""")

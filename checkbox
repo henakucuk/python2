@@ -1,0 +1,22 @@
+import tkinter as tk
+pen = tk.Tk()
+
+pen.geometry("300x300")
+
+def test():
+    print(valketchup.get(),valmayo.get())
+
+#tıklayıp tıklanmadığını saklıyor
+valketchup=tk.BooleanVar()
+valketchup.set(True)
+ketchup=tk.Checkbutton(text="Ketchup",variable=valketchup,state="disabled") #state="disabled" bize başta seçili değiştirilemez şekilde verecek
+ketchup.pack()
+
+valmayo=tk.BooleanVar()
+mayo=tk.Checkbutton(text="Mayonnaise",variable=valmayo)
+mayo.pack()
+
+btn=tk.Button(text="gönder",command=test)
+btn.pack()
+
+pen.mainloop()

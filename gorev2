@@ -1,0 +1,13 @@
+import requests,json
+
+id="https://api.ibb.gov.tr/MetroIstanbul/api/MetroMobile/V2/GetTicketPrice/TR"
+
+veri=requests.get(id).text
+data=json.loads(veri)
+
+for grup in data["Data"]:
+    for fiyatlar in grup["TicketPrices"]:
+        print(fiyatlar["Name"],fiyatlar["Price"])
+
+#eger sadece tam biletin fiyatını isteseydik böyle yazardık ama bu id in içine göre değişir
+print(data["Data"][0]["TicketPrices"][0]["Price"])

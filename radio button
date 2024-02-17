@@ -1,0 +1,16 @@
+import tkinter as tk
+
+pen=tk.Tk()
+
+def showme():
+    print(soup_var.get())
+
+soup_var = tk.IntVar()   #aynı zamanda stringvar ve booleanvar diyebiliriz string evet,hayır bool true false
+soup_var.set(1) #1e basılı başlayacak,yazmasakta olur bizim tercihimiz
+
+soupyes = tk.Radiobutton(text="i want soup",variable=soup_var,value=1,command=showme)
+soupyes.pack()
+soupno = tk.Radiobutton(text="i dont want soup",variable=soup_var,value=0,command=showme)
+soupno.pack()
+
+pen.mainloop()

@@ -1,0 +1,25 @@
+import tkinter as tk
+
+pen=tk.Tk()
+pen.geometry("600x300")
+
+def hesapla(e):
+    c = int(degree.get())
+    f = round(c*1.8+32,2)   #virgulden 2 sonrasını yazmıyor round ve ,2 dedik diye
+    k = round(c+237.15,2)
+    metin = str(f)+" F      "+str(k)+" K"
+    lbl2["text"]=metin
+
+lbl1=tk.Label(text="Degree")
+lbl1.grid(row=0,column=0,padx=10)
+
+degree=tk.Scale(tickinterval=25,showvalue=True,length=250,from_=-50,to=100,orient="horizontal",command=hesapla)
+#showvalue(deger gosterme)true diyoruz ama demesekte gosteriyor false desek gostermez
+#orient normalde dikey halde biz yatay yapiyoruz
+
+degree.grid(row=0,column=1)
+
+lbl2=tk.Label(text="",font=("Arial",32))
+lbl2.grid(row=1,column=1)
+
+pen.mainloop()

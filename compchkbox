@@ -1,0 +1,32 @@
+import tkinter as tk
+import webbrowser as wb
+
+pen = tk.Tk()
+pen.geometry("300x300")
+
+def comp():
+    if valasus.get()== False and valhp.get()==False and valmon.get()==False:
+        url="https://www.hepsiburada.com/ara?q=laptop"
+        wb.open(url)
+    else:
+        url="https://www.hepsiburada.com/ara?q=laptop&markalar="
+        if valasus.get():
+            url=url+"asus,"
+        if valhp.get():
+            url=url+"hp,"
+        if valmon.get():
+            url=url+"monster,"
+        url=url[:-1] #sondaki virgül
+        wb.open(url)
+
+valasus=tk.BooleanVar()
+tk.Checkbutton(text="Asus",variable=valasus).grid(row=0,column=0,sticky="W")
+valhp=tk.BooleanVar()
+tk.Checkbutton(text="HP",variable=valhp).grid(row=1,column=0,sticky="W")
+valmon=tk.BooleanVar()
+tk.Checkbutton(text="Monster",variable=valmon).grid(row=2,column=0,sticky="W")
+
+btn=tk.Button(text="go",command=comp)
+btn.grid(row=5,column=0)
+
+pen.mainloop()

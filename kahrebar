@@ -1,0 +1,17 @@
+sayi = "1943"
+
+def kahrebar(sayi,durum = True):
+    liste = list(sayi)
+    liste.sort(reverse=durum)
+    strsayi = ''.join(liste) #listenin elemanları string olsun
+    return int(strsayi)
+
+while True:
+    #kucukten buyuge kahrebar(sayi,False)
+    #buyukten kucuge  kahrebar(sayi,True)
+    fark = kahrebar(sayi,True)-kahrebar(sayi,False)
+    if fark == 6174:
+        print(f"{fark}")
+        break
+    print(f"{fark}")
+    sayi = str(fark)

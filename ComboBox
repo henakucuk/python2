@@ -1,0 +1,19 @@
+import PySimpleGUI as sg 
+languages=["Python","C","Ardunio"]
+
+layout=[
+    [sg.Combo(languages,key="-combo-",default_value=languages[0])],
+    [sg.Button("Show")]
+]
+
+window=sg.Window("title",layout)
+
+while True:
+    event,values=window.read()
+    print(event,values)
+    if event == "Show":
+        sg.popup(values["-combo-"])
+    if event==sg.WIN_CLOSED:
+        break
+
+window.close()

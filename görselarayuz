@@ -1,0 +1,18 @@
+import PySimpleGUI as sg
+
+#sg.theme_previewer()
+sg.theme("DarkPurple")
+
+gorunum=[
+    [sg.Text("Hello"),sg.T("Good Morning")],
+    [sg.T("Hena Kucuk",font="Arial")],
+    [sg.B("quit")]
+]
+
+pen=sg.Window("first class",layout=gorunum,size=(300,300))
+
+while True:
+    event,data=pen.read()
+    
+    if event in ("quit",sg.WIN_CLOSED):
+        break

@@ -1,0 +1,32 @@
+import json,requests
+import PySimpleGUI as sg
+
+title=["ID","NAME","LASTNAME","EMAIL"]
+veriler=[]
+
+def getdata():
+    id="https://jsonplaceholder.typicode.com/users"
+    veri=requests.get(id).text
+    datas=json.loads(veri)
+    for data in datas:
+        satir=[]
+        satir.append(data["id"])
+        satir.append(data["name"])
+        satir.append(data["username"])
+        satir.append(data["email"])
+        veriler.append(satir)
+    return veriler
+
+gorunum=[
+    [sg.Table(headings=title,values=getdata(),num_rows=min(5,len(getdata())),auto_size_columns=True,justification='left')]
+]
+
+win=sg.Window("tablo",layout=gorunum)
+
+while True:
+    event,data=win.read()
+    
+    if event in ("Exit",sg.WIN_CLOSED):
+        break
+
+win.close()

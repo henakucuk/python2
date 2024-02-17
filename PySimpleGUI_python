@@ -1,0 +1,22 @@
+import PySimpleGUI as sg
+
+#sg.theme("DarkRed1")
+
+title=["Sn.","Name","Lastname"]
+data=[
+    ["1","Hena","Kucuk"],
+    ["2","Cinar","Kucukogullari"],
+    ["3","Sevil","Kucuk"]
+]
+
+gorunum=[
+    [sg.Table(headings=title,values=data,num_rows=len(data),auto_size_columns=True,justification='left')]
+]
+
+win=sg.Window("tablo",layout=gorunum)
+
+while True:
+    event,data=win.read()
+    
+    if event in ("Exit",sg.WIN_CLOSED):
+        break

@@ -1,0 +1,10 @@
+import requests,json
+
+id="https://api.ibb.gov.tr/ispark-bike/GetAllStationStatus"
+
+veri=requests.get(id).text
+data=json.loads(veri)
+
+for i in data["dataList"]:
+    if "2023-12-02" in i["sonBaglanti"]:
+        print(i["adi"],i["sonBaglanti"],i["bos"])

@@ -1,0 +1,21 @@
+import json
+
+bilgi="""{
+"adi":"hena",
+"soyadi":"kucuk",
+"yas":16,  
+"kardesler":["buglem","ecrin"],
+"okullar":["abc ilkokul","def ortaokulu"]
+}
+"""
+data=json.loads(bilgi)
+
+#try:
+#    print(data["dogum"])
+#except KeyError:
+#    print("boyle bir data yok")
+
+#print(data["adi"])
+
+for kardes in (data["kardesler"]):
+    print(kardes)

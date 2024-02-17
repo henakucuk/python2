@@ -1,0 +1,25 @@
+import psutil
+import PySimpleGUI as sg 
+
+def calisanisler():
+    islemler=[]
+    for islem in psutil.process_iter(["pid","name","username"]):
+        islemler.append((islem.info["pid"],islem.info["name"],islem.info["username"]))
+    return islemler 
+
+
+layout=[
+    [sg.Table(values=calisanisler(),
+              headings=["pid","name","username"],
+              key="tablo",auto_size_columns=True
+              )],
+    [sg.B("Refresh"),sg.B("Exit")]
+]
+pen=sg.Window("veri",layout)
+
+while True:
+    event,values=pen.read()
+    if event=="Refresh":
+        pen["tablo"].update(values=calisanisler())
+    if event in ("Exit",sg.WIN_CLOSED):
+        break

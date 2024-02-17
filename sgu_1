@@ -1,0 +1,18 @@
+import PySimpleGUI as sg
+
+sg.theme("BrightColors")
+
+gorunum=[
+    [sg.T("Ad"),sg.I(key="name")],
+    [sg.T("Soyad"),sg.I(key="lastname")],
+    [sg.B("QUIT")]
+]
+
+pen=sg.Window("first class",layout=gorunum,size=(300,300))
+
+while True:
+    event,data=pen.read()
+    print(event,data)
+    print(data["name"])
+    if event in ("QUIT",sg.WIN_CLOSED):
+        break

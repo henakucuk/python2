@@ -1,0 +1,26 @@
+import PySimpleGUI as sg 
+colors=["Black","Brown","Red","Orange"]
+yok=["Silver","Gold"]
+dictionary={"Black":"0","Brown":"1","Red":"2","Orange":"3"}
+
+layout=[
+    [sg.Combo(colors,key="-color1-",default_value=colors[0]),
+    sg.Combo(colors,key="-color3-",default_value=colors[2]),
+    sg.Combo(colors,key="-color2-",default_value=colors[1]),
+    sg.Combo(yok,key="-sensitivity-",default_value=yok[0])],
+    [sg.B("Show")]
+]
+
+window=sg.Window("title",layout)
+
+while True:
+    event,values=window.read()
+    print(event,values)
+    if event == "Show":
+        hesap=dictionary[values["-color1-"]]+dictionary[values["-color2-"]]
+        deger=int(hesap)*(10*int(dictionary[values["-color3-"]]))
+        sg.popup(deger)
+    if event == sg.WIN_CLOSED:
+        break
+
+window.close()

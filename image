@@ -1,0 +1,11 @@
+import tkinter as tk
+from PIL import Image,ImageTk
+
+window=tk.Tk()
+
+logo=ImageTk.PhotoImage(Image.open("Hena.png"))
+
+btn=tk.Button(image=logo)
+btn.pack()
+
+window.mainloop()

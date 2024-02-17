@@ -1,0 +1,39 @@
+#Asus
+#Lenovo
+#HP
+#Dell
+#Acer
+#Casper
+#Universal
+#Monster
+#MSI
+#eksik. tam hali compchkbox
+
+import tkinter as tk
+pen = tk.Tk()
+pen.geometry("300x300")
+
+def comp():
+    print(valasus.get())
+
+valasus=tk.BooleanVar()
+vallenovo= tk.BooleanVar()
+valhp=tk.BooleanVar()
+valdell = tk.BooleanVar()
+
+asus=tk.Checkbutton(text="Asus",variable=valasus)
+asus.pack()
+
+lenovo=tk.Checkbutton(text="Lenovo",variable=vallenovo)
+lenovo.pack()
+
+HP=tk.Checkbutton(text="HP",variable=valhp)
+HP.pack()
+
+Dell=tk.Checkbutton(text="Dell",variable=valdell)
+Dell.pack()
+
+btn=tk.Button(text="gönder",command=comp)
+btn.pack()
+
+pen.mainloop()

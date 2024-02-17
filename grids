@@ -1,0 +1,21 @@
+import tkinter as tk
+
+pen=tk.Tk()
+pen.geometry("300x300")
+
+lbl1 = tk.Label(text="User Name")
+lbl1.grid(row=0,column=0,pady=20,padx=10) #y veya x e aralık koyuyor
+
+ent1=tk.Entry()
+ent1.grid(row=0,column=1)
+
+lbl2=tk.Label(text="Password: ")
+lbl2.grid(row=1,column=0)
+
+ent2=tk.Entry()
+ent2.grid(row=1,column=1)
+
+btn1=tk.Button(text="UNİON",width=40)
+btn1.grid(row=2,column=0,columnspan=2)
+
+pen.mainloop()

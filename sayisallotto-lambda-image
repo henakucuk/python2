@@ -1,0 +1,44 @@
+import random
+import tkinter as tk
+
+window=tk.Tk()
+
+pc=[10,20,30,40,45,6]
+me=[10,20,11,23,25,26]
+
+def rstgl(btnno):
+    if btnno==1:
+        btn1["text"]=str(me[btnno-1])
+    if btnno==2:
+        btn2["text"]=str(me[btnno-1])
+    if btnno==3:
+        btn3["text"]=str(me[btnno-1])
+    if btnno==4:
+        btn4["text"]=str(me[btnno-1])
+    if btnno==5:
+        btn5["text"]=str(me[btnno-1])
+    if btnno==6:
+        btn6["text"]=str(me[btnno-1])
+
+def show():
+    adet=len(set(pc).intersection(set(me)))
+    print(adet)
+
+
+btn1=tk.Button(text=" ",command=lambda: rstgl(1))
+btn1.grid(row=1,column=0)
+btn2=tk.Button(text=" ",command=lambda: rstgl(2))
+btn2.grid(row=1,column=1)
+btn3=tk.Button(text=" ",command=lambda: rstgl(3))
+btn3.grid(row=1,column=2)
+btn4=tk.Button(text=" ",command=lambda: rstgl(4))
+btn4.grid(row=1,column=3)
+btn5=tk.Button(text=" ",command=lambda: rstgl(5))
+btn5.grid(row=1,column=4)
+btn6=tk.Button(text=" ",command=lambda: rstgl(6))
+btn5.grid(row=1,column=5)
+
+btnlast=tk.Button(text="show",command=show)
+btnlast.grid(row=1,column=6)
+
+window.mainloop()

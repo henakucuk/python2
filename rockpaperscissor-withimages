@@ -1,0 +1,62 @@
+import tkinter as tk
+from PIL import Image,ImageTk
+import random
+
+window=tk.Tk()
+
+def pcimage():
+    i=random.choice(["rock","paper","scissor"])
+    if i=="rock":
+        btnq["image"]=rock
+    elif i=="paper":
+        btnq["image"]=paper
+    elif i=="scissor":
+        btnq["image"]=scissor
+    return i
+
+def rockbsld():
+    pc=pcimage()
+    if pc=="scissor":
+        lblme["text"]=int(lblme["text"])+1
+    elif pc=="paper":
+        lblpc["text"]=int(lblpc["text"])+1
+
+def paperbsld():
+    pc=pcimage()
+    if pc=="rock":
+        lblme["text"]=int(lblme["text"])+1
+    elif pc=="scissor":
+        lblpc["text"]=int(lblpc["text"])+1
+
+def scissorbsld():
+    pc=pcimage()
+    if pc=="paper":
+        lblme["text"]=int(lblme["text"])+1
+    elif pc=="rock":
+        lblpc["text"]=int(lblpc["text"])+1
+
+paper=ImageTk.PhotoImage(Image.open("kagit.png"))
+btnp=tk.Button(image=paper,command=paperbsld)
+btnp.grid(row=3,column=0)
+
+rock=ImageTk.PhotoImage(Image.open("tas.png"))
+
+btnr = tk.Button(image=rock,command=rockbsld)
+btnr.grid(row=3,column=1)
+
+scissor = ImageTk.PhotoImage(Image.open("makas.png"))
+
+btns = tk.Button(image=scissor,command=scissorbsld)
+btns.grid(row=3,column=2)
+
+questionmark = ImageTk.PhotoImage(Image.open("qmark.jpg"))
+btnq=tk.Button(image=questionmark)
+btnq.grid(row=0,column=1)
+
+lblme=tk.Label(text="0",font=("Arial",20),fg="blue")
+lblme.grid(row=2,column=1)
+
+lblpc=tk.Label(text="0",font=("Arial",20),fg="red")
+lblpc.grid(row=1,column=1)
+
+window.mainloop()

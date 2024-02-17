@@ -1,0 +1,10 @@
+import requests,json
+
+id="https://api.ibb.gov.tr/ispark/Park"
+
+veri=requests.get(id).text
+data=json.loads(veri)
+
+for otopark in data:
+    if otopark["district"] == "FATİH":
+        print(otopark["parkName"])

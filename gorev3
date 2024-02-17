@@ -1,0 +1,11 @@
+import requests,json
+
+id="https://api.ibb.gov.tr/MetroIstanbul/api/MetroMobile/V2/GetStations"
+
+veri=requests.get(id).text
+data=json.loads(veri)
+
+for durak in data["Data"]:      #tum durakları kes
+    if durak["LineName"] == "M4":   #sadece m4 hattı
+        if durak["DetailInfo"]["WC"]:  #sadece wc olanlar
+            print(durak["Name"],durak["DetailInfo"]["WC"])

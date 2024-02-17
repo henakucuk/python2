@@ -1,0 +1,17 @@
+import requests,json
+
+id="https://raw.githubusercontent.com/vega/vega/main/docs/data/movies.json"
+
+veri=requests.get(id).text
+data=json.loads(veri)
+
+for i in data:
+    if i['IMDB Rating'] is not None:
+        if i['IMDB Rating']>=9:
+            print(i['Title'],i['IMDB Rating'])
+
+print("500000000 ustu")
+for i in data:
+    if i["Production Budget"] is not None:
+        if i["Production Budget"]>=150000000:
+            print(i['Title'],i["Production Budget"])

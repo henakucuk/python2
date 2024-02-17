@@ -1,0 +1,14 @@
+import json,requests
+adres="https://raw.githubusercontent.com/bttmly/nba/master/data/players.json"
+
+site=requests.get(adres)
+
+if site.status_code==200:
+    data=site.text
+    veri=json.loads(data)
+    #burada takımlar arasında gezelim
+    for takim in veri:
+        
+        print(takim['firstName'],takim['lastName'])
+else:
+    print("Hata")

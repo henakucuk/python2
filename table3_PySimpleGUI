@@ -1,0 +1,29 @@
+import json,requests
+import PySimpleGUI as sg
+
+def gunceldurum():
+    veri=requests.get("https://api.binance.com/api/v3/avgPrice?symbol=BTCUSDT").text
+    data=json.loads(veri)
+    veriler=[]
+    veriler.append(["BTCUSDT",data["price"],data["closeTime"]])
+    return veriler
+
+gorunum=[
+    [sg.Table(
+        headings=["COIN","PRICE","CLOSING TIME"],
+        values=gunceldurum(),
+        num_rows=1,
+        auto_size_columns=True,
+        key="-tablo-",
+        justification='left'
+    )],
+    [sg.B("Güncelle")]
+]
+
+win=sg.Window("COIN BILGI",layout=gorunum)
+while True:
+    event,data=win.read()
+    if event==sg.WIN_CLOSED:
+        break
+    if event=="Güncelle":
+        win["-tablo-"].update(values=gunceldurum())

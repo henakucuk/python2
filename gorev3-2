@@ -1,0 +1,13 @@
+import requests,json
+
+id="https://api.ibb.gov.tr/MetroIstanbul/api/MetroMobile/V2/GetStations"
+
+veri=requests.get(id).text
+data=json.loads(veri)
+toplam=0
+for durak in data["Data"]:     
+    if durak["LineName"] == "M4":
+        print(durak["Description"],durak["DetailInfo"]["Lift"])
+        toplam+=durak["DetailInfo"]["Lift"]
+
+print(toplam)

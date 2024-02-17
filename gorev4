@@ -1,0 +1,10 @@
+import requests,json
+
+id="https://api.ibb.gov.tr/MetroIstanbul/api/MetroMobile/V2/GetActivities"
+
+veri=requests.get(id).text
+data=json.loads(veri)
+
+for duyuru in data["Data"]:
+    if "2023" in duyuru["StartDate"]:
+        print(duyuru["Title"])

@@ -1,0 +1,13 @@
+import requests,json
+
+id="https://raw.githubusercontent.com/vega/vega/main/docs/data/jobs.json"
+
+veri=requests.get(id).text
+data=json.loads(veri)
+
+istenen="Tailor"
+istenensex = "men"
+for i in data:
+    if i['job'] == istenen:
+        if i['sex'] == istenensex:
+            print(i['year'],i['count'])
